@@ -3,16 +3,17 @@ import java.util.Scanner;
 public class LeakyBucket {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter bucket size and rate: ");
+        
+        System.out.print("Enter bucket size, rate and no. of packets: ");
         int bucket_cap = sc.nextInt();  
         int rate = sc.nextInt();        
-
-        System.out.print("\nEnter no. of packets: ");
-        int n = sc.nextInt();          
+        int n = sc.nextInt();   
+        
         int[] packets = new int[n];     
+        
         System.out.println("Enter size of packets:");
         for (int i = 0; i < n; ++i) {
-            System.out.print("\tpacket[" + (i + 1) + "]: ");
+            System.out.print("packet[" + (i + 1) + "]: ");
             packets[i] = sc.nextInt();  
         }
 
@@ -30,14 +31,9 @@ public class LeakyBucket {
             int sent = Math.min(bucket_rem, rate);
             bucket_rem -= sent;
 
-            System.out.println("\nPacket[" + (i + 1) + "]: " + packetSize);
-            if (packetDropped) {
-                System.out.println("Packet dropped!!");
-            } else {
-                System.out.println("Received: " + packetSize);
-                System.out.println("Sent: " + sent);
-                System.out.println("Remaining: " + bucket_rem);
-            }
+            System.out.println("\nPacket[" +(i+1)+ "]");
+            if (packetDropped) System.out.println("(Received: " + packetSize+", Packet dropped)");
+            else System.out.println("(Received: " + packetSize + ", Sent: " + sent+" , Remaining: " + bucket_rem+")");
         }
         
         sc.close();
