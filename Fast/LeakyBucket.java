@@ -11,9 +11,8 @@ public class LeakyBucket {
         
         int[] packets = new int[n];     
         
-        System.out.println("Enter size of packets:");
+        System.out.print("Enter size of packets: ");
         for (int i = 0; i < n; ++i) {
-            System.out.print("packet[" + (i + 1) + "]: ");
             packets[i] = sc.nextInt();  
         }
 
