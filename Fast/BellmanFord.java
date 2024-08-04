@@ -7,7 +7,7 @@ public class BellmanFord {
         dist[S] = 0;
 
         for(int i = 0; i < V-1; i++){
-            for(ArrayList<Integer> it: edges){
+            for(var it: edges){
                 int u = it.get(0);
                 int v = it.get(1);
                 int wt = it.get(2);
