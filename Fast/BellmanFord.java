@@ -18,7 +18,7 @@ public class BellmanFord {
             }
         }
 
-        for(ArrayList<Integer> it : edges){
+        for(var it : edges){
             int u = it.get(0);
             int v = it.get(1);
             int wt = it.get(2);
