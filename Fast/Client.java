@@ -5,17 +5,17 @@ import java.io.*;
 public class Client {
     public static void main(String[] args) throws Exception {
 
-        Socket sock = new Socket("127.0.0.1", 4000);
+        Socket s = new Socket("127.0.0.1", 4000);
         System.out.println("Enter the filename");
 
         BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
         String fname = keyRead.readLine();
 
-        OutputStream ostream = sock.getOutputStream();
+        OutputStream ostream = s.getOutputStream();
         PrintWriter pwrite = new PrintWriter(ostream, true);
         pwrite.println(fname);
         
-        InputStream istream = sock.getInputStream();
+        InputStream istream = s.getInputStream();
         BufferedReader socketRead = new BufferedReader(new InputStreamReader(istream));
         String str;
         while ((str = socketRead.readLine()) != null) {
@@ -24,6 +24,6 @@ public class Client {
         pwrite.close();
         socketRead.close();
         keyRead.close();
-        sock.close();
+        s.close();
     }
 }
