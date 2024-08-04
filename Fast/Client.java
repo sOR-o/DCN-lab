@@ -8,22 +8,22 @@ public class Client {
         Socket s = new Socket("127.0.0.1", 4000);
         System.out.println("Enter the filename");
 
-        BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
-        String fname = keyRead.readLine();
+        BufferedReader r1 = new BufferedReader(new InputStreamReader(System.in));
+        String fname = r1.readLine();
 
         OutputStream ostream = s.getOutputStream();
-        PrintWriter pwrite = new PrintWriter(ostream, true);
-        pwrite.println(fname);
+        PrintWriter p = new PrintWriter(ostream, true);
+        p.println(fname);
         
         InputStream istream = s.getInputStream();
-        BufferedReader socketRead = new BufferedReader(new InputStreamReader(istream));
+        BufferedReader r2 = new BufferedReader(new InputStreamReader(istream));
         String str;
-        while ((str = socketRead.readLine()) != null) {
+        while ((str = r2.readLine()) != null) {
             System.out.println(str);
         }
-        pwrite.close();
-        socketRead.close();
-        keyRead.close();
+        p.close();
+        r2.close();
+        r1.close();
         s.close();
     }
 }
