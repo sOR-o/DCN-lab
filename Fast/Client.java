@@ -11,12 +11,12 @@ public class Client {
         BufferedReader r1 = new BufferedReader(new InputStreamReader(System.in));
         String fname = r1.readLine();
 
-        OutputStream ostream = s.getOutputStream();
-        PrintWriter p = new PrintWriter(ostream, true);
+        OutputStream o = s.getOutputStream();
+        PrintWriter p = new PrintWriter(o, true);
         p.println(fname);
         
-        InputStream istream = s.getInputStream();
-        BufferedReader r2 = new BufferedReader(new InputStreamReader(istream));
+        InputStream i = s.getInputStream();
+        BufferedReader r2 = new BufferedReader(new InputStreamReader(i));
         String str;
         while ((str = r2.readLine()) != null) {
             System.out.println(str);
