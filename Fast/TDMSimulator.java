@@ -1,8 +1,3 @@
-//  3) B.
-// 11) B.
-// Write a program for Time Division Multiplexing Simulator. Show how the time 
-// division multiplexing technique works
-
 import java.util.Scanner;
 
 class TDMSimulator {
@@ -12,10 +7,10 @@ class TDMSimulator {
         System.out.print("Enter the number of stations (maximum 10): ");
         int numberOfStations = sc.nextInt();
 
-        int[] processingTime = new int[numberOfStations]; // Processing time for each station
-        int[] waitingTime = new int[numberOfStations]; // Waiting time for each station
-        int[] turnaroundTime = new int[numberOfStations]; // Turnaround time for each station
-        int[] remainingTime = new int[numberOfStations]; // Remaining processing time for each station
+        int[] processingTime = new int[numberOfStations];
+        int[] waitingTime = new int[numberOfStations]; 
+        int[] turnaroundTime = new int[numberOfStations]; 
+        int[] remainingTime = new int[numberOfStations]; 
 
         System.out.println("Enter the processing time for each station:");
         for (int i = 0; i < numberOfStations; i++) {
@@ -25,25 +20,24 @@ class TDMSimulator {
         }
 
         System.out.print("Enter the frame size: ");
-        int frameSize = sc.nextInt(); // Frame size
+        int frameSize = sc.nextInt();
 
-        int currentTime = 0; // Current time
+        int currentTime = 0; 
         while (true) {
             boolean allStationsDone = true;
 
             for (int i = 0; i < numberOfStations; i++) {
                 if (remainingTime[i] > 0) {
                     allStationsDone = false;
-                    // If the remaining processing time is greater than the frame size, process for the frame size
+                
                     if (remainingTime[i] > frameSize) {
-                        currentTime += frameSize; // Increment the current time by the frame size
-                        remainingTime[i] -= frameSize; // Decrement the remaining processing time by the frame size
+                        currentTime += frameSize; 
+                        remainingTime[i] -= frameSize;
                     }
-                    // If the remaining processing time is less than or equal to the frame size, process for the remaining time
                     else {
-                        currentTime += remainingTime[i]; // Increment the current time by the remaining processing time
-                        remainingTime[i] = 0; // Set the remaining processing time to 0
-                        turnaroundTime[i] = currentTime; // Set the turnaround time for the station required to complete the processing
+                        currentTime += remainingTime[i];
+                        remainingTime[i] = 0; 
+                        turnaroundTime[i] = currentTime;
                     }
                 }
             }
@@ -58,7 +52,7 @@ class TDMSimulator {
         System.out.println("----------------------------------------------------------");
 
         for (int i = 0; i < numberOfStations; i++) {
-            // waiting time = turnaround time - processing time 
+            
             waitingTime[i] = turnaroundTime[i] - processingTime[i];
             totalWaitingTime += waitingTime[i];
             totalTurnaroundTime += turnaroundTime[i];
